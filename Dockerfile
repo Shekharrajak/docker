@@ -80,15 +80,15 @@ EXPOSE ${agent_port}
 ENV COPY_REFERENCE_FILE_LOG $JENKINS_HOME/copy_reference_file.log
 
 # use docker without sudo
-USER root
-RUN gpasswd -a ${user} docker
+#USER root
+#RUN gpasswd -a ${user} docker
 # RUN gpasswd -a ${USER} docker
-RUN service docker start 
-RUN newgrp docker
-RUN gpasswd -a root docker # RUN systemctl restart docker
+#RUN service docker start 
+#RUN newgrp docker
+#RUN gpasswd -a root docker # RUN systemctl restart docker
 # RUN docker run hello-world
 
-#USER ${user}
+USER ${user}
 
 COPY jenkins-support /usr/local/bin/jenkins-support
 COPY jenkins.sh /usr/local/bin/jenkins.sh
